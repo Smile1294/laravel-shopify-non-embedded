@@ -24,13 +24,13 @@ TO USE THIS PACKAGE EDIT YOUR COMPOSER LIKE THIS:
             "type": "git",
             "url": "https://github.com/Smile1294/laravel-shopify-non-embedded.git"
         }
-    ],
-
-    "require": {
-        "php": "^8.0.2",
-        "osiset/laravel-shopify": "*"
-    }
+    ]
 }
+"require": {
+    "php": "^8.0.2",
+    "osiset/laravel-shopify": "*"
+}
+
 
 !!! WARNING !!!
 
