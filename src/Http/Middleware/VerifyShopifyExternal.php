@@ -84,6 +84,20 @@ class VerifyShopifyExternal extends VerifyShopify
 
         return $next($request);
     }
+    /**
+     * Redirect to install route.
+     *
+     * @param ShopDomainValue $shopDomain The shop domain.
+     *
+     * @return RedirectResponse
+     */
+    protected function installRedirect(ShopDomainValue $shopDomain): RedirectResponse
+    {
+        return Redirect::route(
+            Util::getShopifyConfig('route_names.authenticate'),
+            ['shop' => $shopDomain->toNative()]
+        );
+    }
 
     /**
      * Login and verify the shop and it's data.
