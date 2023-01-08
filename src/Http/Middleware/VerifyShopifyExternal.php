@@ -18,6 +18,7 @@ use Osiset\ShopifyApp\Services\ShopSession;
 use Osiset\ShopifyApp\Util;
 use Osiset\ShopifyApp\Traits\VerifyShopifyMiddleware;
 use Illuminate\Support\Str;
+use Illuminate\Support\Collection;
 
 
 /**
@@ -67,6 +68,7 @@ class VerifyShopifyExternal extends VerifyShopify
         if (Str::contains($request->getRequestUri(), ['/authenticate', '/billing'])) {
             return $next($request);
         }
+
         $checks = [];
         if ($this->shopSession->guest()) {
 
@@ -87,6 +89,44 @@ class VerifyShopifyExternal extends VerifyShopify
 
         return $next($request);
     }
+        /**
+     * Get the token from request (if available).
+     *
+     * @param Request $request The request object.
+     *
+     * @return string
+     */
+    protected function getAccessTokenFromRequest(Request $request): ?string
+    {
+        if (Util::getShopifyConfig('turbo_enabled')) {
+            if ($request->bearerToken()) {
+                // Bearer tokens collect.
+                // Turbo does not refresh the page, values are attached to the same header.
+                $bearerTokens = Collection::make(explode(',', $request->header('Authorization', '')));
+                $newestToken = Str::substr(trim($bearerTokens->last()), 7);
+
+                return $newestToken;
+            }
+
+            return $request->get('token');
+        }
+
+        return $this->isApiRequest($request) ? $request->bearerToken() : $request->get('token');
+    }
+
+    /**
+     * Determine if the request is AJAX or expects JSON.
+     *
+     * @param Request $request The request object.
+     *
+     * @return bool
+     */
+    protected function isApiRequest(Request $request): bool
+    {
+        return $request->ajax() || $request->expectsJson();
+    }
+
+
     /**
      * Redirect to install route.
      *
@@ -165,7 +205,19 @@ class VerifyShopifyExternal extends VerifyShopify
 
         return true;
     }
+    /**
+     * Check if there is a store record in the database.
+     *
+     * @param Request $request The request object.
+     *
+     * @return bool
+     */
+    protected function checkPreviousInstallation(Request $request): bool
+    {
+        $shop = $this->shopQuery->getByDomain(ShopDomain::fromRequest($request), [], true);
 
+        return $shop && ! $shop->trashed();
+    }
     /**
      * Grab the shop, if present, and how it was found.
      * Order of precedence is:.
@@ -237,7 +289,7 @@ class VerifyShopifyExternal extends VerifyShopify
 
         // Mis-match of shops
         return Redirect::route(
-            Util::getShopifyConfig('route_names.authenticate.oauth'),
+            Util::getShopifyConfig('route_names.authenticate'),
             ['shop' => $domain->toNative()]
         );
     }
