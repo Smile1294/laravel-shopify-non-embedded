@@ -1,5 +1,14 @@
 # Laravel Shopify App
 
+
+!!! WARNING !!!
+
+THIS PACKAGE IS NOT MINE NOR I UPDATE IT OR ANYTIHNG LIKE THAT PLEASE BE AWARE OF THAT I JUST COPPIED THE PACKAGE FROM xplodedthemes WHO WAS ATTEMPTING TO MAKE THIS PACKAGE FOR NON EMBEDDED APPLICATIONS IT DOES WORK NOW BUT I DO NOT SUGGEST USING THIS PACKAGE AS IT CAN GET OUTDATED VERY QUICK
+
+!!! WARNING !!!
+
+
+
 ![Tests](https://github.com/osiset/laravel-shopify/workflows/Package%20Test/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/osiset/laravel-shopify/branch/master/graph/badge.svg?token=qqUuLItqJj)](https://codecov.io/gh/osiset/laravel-shopify)
 [![License](https://poser.pugx.org/osiset/laravel-shopify/license)](https://packagist.org/packages/osiset/laravel-shopify)
