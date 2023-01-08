@@ -13,7 +13,7 @@ WHO WAS ATTEMPTING TO MAKE THIS PACKAGE FOR NON EMBEDDED APPLICATIONS IT DOES WO
 TO USE THIS PACKAGE EDIT YOUR COMPOSER LIKE THIS:
 
 
-``
+{
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
@@ -30,7 +30,7 @@ TO USE THIS PACKAGE EDIT YOUR COMPOSER LIKE THIS:
         "php": "^8.0.2",
         "osiset/laravel-shopify": "*"
     }
-``
+}
 
 !!! WARNING !!!
 
