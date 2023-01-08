@@ -309,6 +309,7 @@ class ShopifyAppProvider extends ServiceProvider
         if(Util::getShopifyConfig('appbridge_enabled')) {
             $this->app['router']->aliasMiddleware('verify.shopify', VerifyShopifyEmbedded::class);
         }else{
+            dd('here');
             $this->app['router']->aliasMiddleware('verify.shopify', VerifyShopifyExternal::class);
         }
     }
