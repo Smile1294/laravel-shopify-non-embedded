@@ -17,6 +17,7 @@ use Osiset\ShopifyApp\Objects\Values\ShopDomain;
 use Osiset\ShopifyApp\Services\ShopSession;
 use Osiset\ShopifyApp\Util;
 use Osiset\ShopifyApp\Traits\VerifyShopifyMiddleware;
+use Illuminate\Support\Str;
 
 
 /**
