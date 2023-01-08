@@ -63,7 +63,9 @@ class VerifyShopifyExternal extends VerifyShopify
     {
         // Grab the domain and check the HMAC (if present)
         $domain = $this->getShopDomainFromRequest($request);
-
+        if (Str::contains($request->getRequestUri(), ['/authenticate', '/billing'])) {
+            return $next($request);
+        }
         $checks = [];
         if ($this->shopSession->guest()) {
 
