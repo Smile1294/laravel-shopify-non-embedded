@@ -3,7 +3,34 @@
 
 !!! WARNING !!!
 
-THIS PACKAGE IS NOT MINE NOR I UPDATE IT OR ANYTIHNG LIKE THAT PLEASE BE AWARE OF THAT I JUST COPPIED THE PACKAGE FROM xplodedthemes WHO WAS ATTEMPTING TO MAKE THIS PACKAGE FOR NON EMBEDDED APPLICATIONS IT DOES WORK NOW BUT I DO NOT SUGGEST USING THIS PACKAGE AS IT CAN GET OUTDATED VERY QUICK
+THIS PACKAGE IS NOT MINE NOR I UPDATE IT OR ANYTIHNG LIKE THAT PLEASE BE AWARE OF THAT I JUST COPPIED THE PACKAGE FROM 
+USER: xplodedthemes https://github.com/xplodedthemes
+PACKAGE: https://github.com/xplodedthemes/laravel-shopify/tree/non-embedded
+ORIGINAL PACKAGE: https://github.com/xplodedthemes/laravel-shopify
+
+WHO WAS ATTEMPTING TO MAKE THIS PACKAGE FOR NON EMBEDDED APPLICATIONS IT DOES WORK NOW BUT I DO NOT SUGGEST USING THIS PACKAGE AS IT CAN GET OUTDATED VERY QUICK
+
+TO USE THIS PACKAGE EDIT YOUR COMPOSER LIKE THIS:
+
+
+``
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/Smile1294/laravel-shopify-non-embedded.git"
+        }
+    ],
+
+    "require": {
+        "php": "^8.0.2",
+        "osiset/laravel-shopify": "*"
+    }
+``
 
 !!! WARNING !!!
 
